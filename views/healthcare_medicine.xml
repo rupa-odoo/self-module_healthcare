@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="healthcare_medicine_action" model="ir.actions.act_window">
+        <field name="name">Healthcare medicine</field>
+        <field name="res_model">healthcare.medicine</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="healthcare_type_form" model="ir.ui.view">
+       <field name="name">healthcare.medicine.form</field>
+        <field name="model">healthcare.medicine</field>
+        <field name="arch" type="xml">
+            <form string="form">
+                <sheet>
+                    <h1>
+                        <field name="name"></field>
+                    </h1>
+                    <group>
+                     <field name="price" string="Price"></field>
+                    </group>
+                       
+                </sheet>
+            </form>
+        </field> 
+    </record>
+
+
+    <record id="Healthcare_medicine_tree" model="ir.ui.view">
+        <field name="name">healthcare.medicine.tree</field>
+        <field name="model">healthcare.medicine</field>
+        <field name="arch" type="xml">
+            <tree string="Heathcare">
+                <field name="name" string="Name"></field>
+                <field name="price" string="Price"></field>
+            </tree>
+        </field>
+    </record>
+</odoo>

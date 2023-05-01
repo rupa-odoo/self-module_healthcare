@@ -12,7 +12,7 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-     <record id="Healthcare_view_tree" model="ir.ui.view">
+    <record id="Healthcare_view_tree" model="ir.ui.view">
         <field name="name">healthcare.appointment.tree</field>
         <field name="model">healthcare.appointment</field>
         <field name="arch" type="xml">
@@ -33,7 +33,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,requested,outcome,invoice"/>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,requested,outcome,invoice" />
                 </header>
                 <sheet>
                     <h1>
@@ -41,9 +42,10 @@
                     </h1>
                     <group>
                         <group>
+                            <field name="date_of_birth" string="Date of Birth"></field>
                             <field name="age" string="Age"></field>
                             <field name="gender" string="Gender"></field>
-                            <field name="date_of_birth" string="Date of Birth"></field>
+
                             <field name="mobile" string="Mobile"></field>
                         </group>
                         <group>
@@ -52,7 +54,7 @@
                             <field name="appointment_date" string="Appointment Date"></field>
                             <field name="docter" string="Docters"></field>
                             <field name="price" string="Price"></field>
-                            
+
                         </group>
                         <notebook>
                             <page string="General">
@@ -63,10 +65,7 @@
                                 </group>
                             </page>
                             <page string="Prescription">
-                                <group>
-                                    <field name="prescription"></field>
-                        
-                                </group>
+                             <field name="prescription_ids"></field>
                             </page>
                         </notebook>
                     </group>
@@ -75,6 +74,11 @@
             </form>
         </field>
     </record>
+
+    <!-- prescription record-->
+    
+
+
     <record id="healthcare_appointment_search" model="ir.ui.view">
         <field name="name">healthcare.appointment.search</field>
         <field name="model">healthcare.appointment</field>
@@ -86,19 +90,23 @@
                 <field name="appointment_date"></field>
                 <field name="healthcare_typeIds"></field>
                 <field name="healthcare_tagIds"></field>
-                <filter string="Age above 18" name="age"
+                <!-- <filter string="Age above 18" name="age"
                     domain="[('age','&gt;',18)]"></filter>
                 <separator>
-                    <filter string="Age below 18" name="age"
+                    <filter string="Age below 18" name="date_of_birth"
                     domain="[('age','&lt;',18)]"></filter>
-                </separator>
+                </separator> -->
+
+                <filter string="Urgency Level" name="healthcare_tagIds"
+                    domain="[('healthcare_tagIds','=','Urgent')]"></filter>
                 <group name="Group By">
                     <filter string="Gender" name="gender" context="{'group_by':'gender'}"></filter>
                 </group>
                 <group name="Group By">
-                    <filter string="Patient Types" name="healthcare_typesIds" context="{'group_by':'healthcare_typeIds'}"></filter>
+                    <filter string="Patient Types" name="healthcare_typesIds"
+                        context="{'group_by':'healthcare_typeIds'}"></filter>
                 </group>
-                
+
             </search>
         </field>
     </record>

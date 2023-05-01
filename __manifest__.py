@@ -10,6 +10,8 @@
         'views/healthcare_appointment.xml',
         'views/healthcare_tag.xml',
         'views/healthcare_type.xml',
+        'views/healthcare_prescription.xml',
+        'views/healthcare_medicine.xml',
         'views/healthcare_menus.xml',
 
     ],

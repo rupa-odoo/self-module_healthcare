@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="healthcare_prescription_action" model="ir.actions.act_window">
+        <field name="name">Healthcare.Prescription</field>
+        <field name="res_model">healtcare.prescription</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record id="estate_property_View_offer_tree" model="ir.ui.view">
+        <field name="name">healthcare.prescription.tree</field>
+        <field name="model">healtcare.prescription</field>
+        <field name="arch" type="xml">
+            <tree string="Prescription">
+                <field name="medicine" string="Medicine"></field>
+                <field name="dose" string="Dose"></field>
+                <field name="duration" string="Duration"></field>
+            </tree>
+        </field>
+    </record>
+</odoo>
