@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+Healthcare.access_healthcare_appointment,access_healthcare_appointment,Healthcare.model_healthcare_appointment,base.group_user,1,1,1,1
+Healthcare.access_healthcare_tag,access_healthcare_tag,Healthcare.model_healthcare_tag,base.group_user,1,1,1,1
+Healthcare.access_healthcare_type,access_healthcare_type,Healthcare.model_healthcare_type,base.group_user,1,1,1,1

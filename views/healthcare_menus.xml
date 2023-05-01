@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="healthcare_menu_root" name="Heathcare">
+        <menuitem id="healthcare_appointment_menu" name="Appointments">
+            <menuitem id="healtcare_appointment_menu_action" action="healthcare_appointment_action" name="Appointment"/>
+        </menuitem>
+        <menuitem id="healthcare_configration" name="Configration">
+            <menuitem id="healthcare_menu_type_action" action="healthcare_type_action" name="Healthcare Types"/>
+            <menuitem id="healthcare_menu_tag_action" action="healthcare_tag_action" name="Healthcare Tags"/>
+    </menuitem>
+    </menuitem>
+</odoo>

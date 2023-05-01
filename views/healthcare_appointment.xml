@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="healthcare_appointment_action" model="ir.actions.act_window">
+        <field name="name">Appointment</field>
+        <field name="res_model">healthcare.appointment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="healthcare_appointment_search_action" model="ir.actions.act_window">
+        <field name="name">search</field>
+        <field name="res_model">healthcare.appointment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <record id="Healthcare_view_tree" model="ir.ui.view">
+        <field name="name">healthcare.appointment.tree</field>
+        <field name="model">healthcare.appointment</field>
+        <field name="arch" type="xml">
+            <tree string="Heathcare">
+                <field name="name" string="Title"></field>
+                <field name="gender" string="Gender"></field>
+                <field name="docter" string="Docter"></field>
+                <field name="healthcare_typeIds" string="Healthcare Type"></field>
+                <field name="healthcare_tagIds" widget="many2many_tags"></field>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="healthcare_view_form" model="ir.ui.view">
+        <field name="name">healthcare.appointment.form</field>
+        <field name="model">healthcare.appointment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,requested,outcome,invoice"/>
+                </header>
+                <sheet>
+                    <h1>
+                        <field name="name" string="Patient Name"></field>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="age" string="Age"></field>
+                            <field name="gender" string="Gender"></field>
+                            <field name="date_of_birth" string="Date of Birth"></field>
+                            <field name="mobile" string="Mobile"></field>
+                        </group>
+                        <group>
+                            <field name="healthcare_typeIds" string="Healthcare Type"></field>
+                            <field name="healthcare_tagIds" widget="many2many_tags"></field>
+                            <field name="appointment_date" string="Appointment Date"></field>
+                            <field name="docter" string="Docters"></field>
+                            <field name="price" string="Price"></field>
+                            
+                        </group>
+                        <notebook>
+                            <page string="General">
+                                <group>
+                                    <field name="address"></field>
+                                    <field name="email"></field>
+                                    <field name="bloodgroup"></field>
+                                </group>
+                            </page>
+                            <page string="Prescription">
+                                <group>
+                                    <field name="prescription"></field>
+                        
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="healthcare_appointment_search" model="ir.ui.view">
+        <field name="name">healthcare.appointment.search</field>
+        <field name="model">healthcare.appointment</field>
+        <field name="arch" type="xml">
+            <search string="HealthcareAppointment">
+                <field name="name" string="Title"></field>
+                <field name="gender"></field>
+                <field name="docter"></field>
+                <field name="appointment_date"></field>
+                <field name="healthcare_typeIds"></field>
+                <field name="healthcare_tagIds"></field>
+                <filter string="Age above 18" name="age"
+                    domain="[('age','&gt;',18)]"></filter>
+                <separator>
+                    <filter string="Age below 18" name="age"
+                    domain="[('age','&lt;',18)]"></filter>
+                </separator>
+                <group name="Group By">
+                    <filter string="Gender" name="gender" context="{'group_by':'gender'}"></filter>
+                </group>
+                <group name="Group By">
+                    <filter string="Patient Types" name="healthcare_typesIds" context="{'group_by':'healthcare_typeIds'}"></filter>
+                </group>
+                
+            </search>
+        </field>
+    </record>
+</odoo>

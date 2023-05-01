@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="healthcare_tag_action" model="ir.actions.act_window">
+    <field name="name">Healthcare Tag</field>
+    <field name="res_model">healthcare.tag</field>
+    <field name="view_mode">tree,form</field>
+    </record>
+    <record id="healthcare_tag_form" model="ir.ui.view">
+       <field name="name">healthcare.tag.form</field>
+        <field name="model">healthcare.tag</field>
+        <field name="arch" type="xml">
+            <form string="form">
+                <sheet>
+                    <h1>
+                        <field name="name"></field>
+                    </h1>
+                </sheet>
+            </form>
+        </field> 
+    </record>
+</odoo>
