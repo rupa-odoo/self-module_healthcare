@@ -4,3 +4,4 @@ Healthcare.access_healthcare_tag,access_healthcare_tag,Healthcare.model_healthca
 Healthcare.access_healthcare_type,access_healthcare_type,Healthcare.model_healthcare_type,base.group_user,1,1,1,1
 Healthcare.access_healtcare_prescription,access_healtcare_prescription,Healthcare.model_healtcare_prescription,base.group_user,1,1,1,1
 Healthcare.access_healthcare_medicine,access_healthcare_medicine,Healthcare.model_healthcare_medicine,base.group_user,1,1,1,1
+Healthcare.access_healthcare_bedmanage,access_healthcare_bedmanage,Healthcare.model_healthcare_bedmanage,base.group_user,1,1,1,1

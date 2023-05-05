@@ -7,5 +7,13 @@ class HealthcarePrescription(models.Model):
     medicine=fields.Char(string="Medicine")
     dose=fields.Char(string="Dose")
     duration=fields.Date(string="Duration")
+    status=fields.Selection(
+        selection=[('accepted','Accepted'),('refused','Refused')],copy=False
+    )
+
+    
+
+
+
 
 

@@ -1,5 +1,6 @@
 from odoo import fields,models,api
 from datetime import date
+from odoo.exceptions import UserError,ValidationError
 
 
 class HealthcareAppointment(models.Model):
@@ -10,7 +11,7 @@ class HealthcareAppointment(models.Model):
     age=fields.Integer(string="Age" ,compute="_patient_age")
     gender=fields.Selection(
         string='Gender',
-        selection=[('male','Male'),('female','Female')],copy=True,default='new')
+        selection=[('male','Male'),('female','Female')],copy=True)
     date_of_birth=fields.Date(string="Date of Birth")
     mobile=fields.Char(string="Mobile")
     appointment_date=fields.Date(string="Appoinment Date")
@@ -30,7 +31,7 @@ class HealthcareAppointment(models.Model):
 
     state=fields.Selection(
         string='state',
-        selection=[('draft','Draft'),('requested','Requested'),('outcome','Outcome'),('invoice','Invoice')],copy=True,default='draft')
+        selection=[('draft','Draft'),('active','Active'),('cancle','Cancle'),('invoice','Invoice')],copy=True,default='draft')
 
     @api.depends("prescription_ids.price")
     def _patient_price(self):
@@ -50,5 +51,17 @@ class HealthcareAppointment(models.Model):
         else:
             self.age=0
 
-    
+    def action_active(self):
+        if self.state=="cancle":
+            raise UserError("Cancle state should not be active")
+        else:
+            self.state="active"
+        return True
+
+    def action_cancled(self):
+        if self.state=="active":
+            raise UserError("Active state should not be Cancle")
+        else:
+            self.state="cancle"
+        return True
         

@@ -1,0 +1,32 @@
+<odoo>
+    <record id="healthcare_bedmanage_action" model="ir.actions.act_window">
+        <field name="name">Bed Manage</field>
+        <field name="res_model">healthcare.bedmanage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="healthcare_bedmanage_form" model="ir.ui.view">
+        <field name="name">healthcare.bedmanage.form</field>
+        <field name="model">healthcare.bedmanage</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="bed_status" widget="statusbar"
+                        statusbar_visible="free,reserved,occuiped,notavailable" />
+                    
+                </header>
+                <sheet>
+                    <h1>
+                        <field name="name"></field>
+                    </h1>
+                    <group>
+                        <field name="reservation_price" string="Reservation Price"></field>
+                        <field name="bed_type" string="Bed Type"></field>
+                        <field name="bed_status" string="Bed status"></field>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

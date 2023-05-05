@@ -12,7 +12,7 @@
             <tree string="Prescription">
                 <field name="medicine" string="Medicine"></field>
                 <field name="dose" string="Dose"></field>
-                <field name="duration" string="Duration"></field>
+                <field name="duration" string="Duration"></field>  
             </tree>
         </field>
     </record>
