@@ -4,5 +4,5 @@ class Healthcare_Types(models.Model):
     _description="Healthcare types"
 
     name=fields.Char("name",required=True)
-    price=fields.Float(string="Price")
+    # price=fields.Float(string="Price")
     

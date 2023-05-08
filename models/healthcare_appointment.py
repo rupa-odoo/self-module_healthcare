@@ -27,18 +27,16 @@ class HealthcareAppointment(models.Model):
     price=fields.Float(string="Price", compute="_patient_price")
     prescription=fields.Text(string="Prescription")
     prescription_ids=fields.Many2many("healthcare.medicine",string="Prescription")
-    
-
+    bed_manage_ids=fields.Many2many("healthcare.bedmanage" ,string="Bed Manage",domain="[('bed_status','not in',['reserved','occuiped'])]")
     state=fields.Selection(
         string='state',
-        selection=[('draft','Draft'),('active','Active'),('cancle','Cancle'),('invoice','Invoice')],copy=True,default='draft')
+        selection=[('draft','Draft'),('active','Active'),('cancel','Cancel'),('invoice','Invoice')],copy=True,default='draft')
 
     @api.depends("prescription_ids.price")
     def _patient_price(self):
-        if self and (self.mapped("prescription_ids.price")):
-            self.price=sum(self.mapped("prescription_ids.price"))
-            
-            print(self.price)
+        if self and (self.mapped("prescription_ids.price"),self.mapped("bed_manage_ids.reservation_charge")):
+            self.price=sum(self.mapped("prescription_ids.price")+self.mapped("bed_manage_ids.reservation_charge"))
+             
             
         else:
             self.price=0
@@ -50,6 +48,9 @@ class HealthcareAppointment(models.Model):
             self.age=((date.today()-self.date_of_birth).days)//365
         else:
             self.age=0
+
+
+    
 
     def action_active(self):
         if self.state=="cancle":
@@ -64,4 +65,5 @@ class HealthcareAppointment(models.Model):
         else:
             self.state="cancle"
         return True
+        
         

@@ -3,7 +3,7 @@
     <menuitem id="healthcare_menu_root" name="Heathcare">
         <menuitem id="healthcare_appointment_menu" name="Appointments">
             <menuitem id="healtcare_appointment_menu_action" action="healthcare_appointment_action" name="Appointment"/>
-            <menuitem id="healthcare_bed_manage_menu_action" action="healthcare_bedmanage_action" name="Bed Manage"/>
+            <menuitem id="healthcare_bedmanage_menu_action" action="healthcare_bedmanage_action" name="Bed Manage"/>
         </menuitem>
         <menuitem id="healthcare_configration" name="Configration">
             <menuitem id="healthcare_menu_type_action" action="healthcare_type_action" name="Healthcare Types"/>

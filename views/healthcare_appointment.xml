@@ -4,6 +4,7 @@
         <field name="name">Appointment</field>
         <field name="res_model">healthcare.appointment</field>
         <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_state':True}</field>
     </record>
 
     <!-- <record id="healthcare_appointment_search_action" model="ir.actions.act_window">
@@ -22,7 +23,7 @@
                 <field name="docter" string="Docter"></field>
                 <field name="healthcare_typeIds" string="Healthcare Type"></field>
                 <field name="healthcare_tagIds" widget="many2many_tags"></field>
-
+                <field name="state" string="State"></field>
             </tree>
         </field>
     </record>
@@ -48,13 +49,15 @@
                             <field name="age" string="Age"></field>
                             <field name="gender" string="Gender"></field>
                             <field name="mobile" string="Mobile"></field>
+                            <field name="state" string="State"></field>
                         </group>
                         <group>
                             <field name="healthcare_typeIds" string="Healthcare Type"></field>
-                            <field name="healthcare_tagIds" widget="many2many_tags"></field>
+                            <field name="healthcare_tagIds" widget="many2many_tags" options="{'color_field': 'color'}"></field>
                             <field name="appointment_date" string="Appointment Date"></field>
                             <field name="docter" string="Docters"></field>
                             <field name="price" string="Price"></field>
+                            
 
                         </group>
                         <notebook>
@@ -67,6 +70,9 @@
                             </page>
                             <page string="Prescription">
                              <field name="prescription_ids"></field>
+                            </page>
+                            <page string="Bed Manage">
+                             <field name="bed_manage_ids" attrs="{'readonly':[('state','in',['reserved','occuiped','notavailable'])]}"></field>
                             </page>
                         </notebook>
                     </group>
@@ -97,6 +103,9 @@
                     <filter string="Age below 18" name="date_of_birth"
                     domain="[('age','&lt;',18)]"></filter>
                 </separator> -->
+                
+                <filter  name="state" string="Active" domain="[('state','=','active')]"></filter>
+                <filter  name="state" string="Cancel" domain="[('state','=','cancel')]"></filter>
 
                 <filter string="Urgency Level" name="healthcare_tagIds"
                     domain="[('healthcare_tagIds','=','Urgent')]"></filter>

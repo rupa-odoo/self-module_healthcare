@@ -12,21 +12,36 @@
             <form>
                 <header>
                     <field name="bed_status" widget="statusbar"
-                        statusbar_visible="free,reserved,occuiped,notavailable" />
-                    
+                        statusbar_visible="free,reserved,occuiped,notavailable" />  
                 </header>
                 <sheet>
                     <h1>
-                        <field name="name"></field>
+                        <field name="name" string="Bed Name"></field>
                     </h1>
                     <group>
-                        <field name="reservation_price" string="Reservation Price"></field>
-                        <field name="bed_type" string="Bed Type"></field>
-                        <field name="bed_status" string="Bed status"></field>
+                            <field name="reservation_charge" string="Reservation Charge"></field>
+                            <field name="bed_type" string="Bed Type"></field>
+                            <field name="bed_status" string="Bed status"></field>
                     </group>
 
                 </sheet>
             </form>
+        </field>
+    </record>
+    <record id="estate_property_View_offer_tree" model="ir.ui.view">
+        <field name="name">healthcare.bedmanage.tree</field>
+        <field name="model">healthcare.bedmanage</field>
+        <field name="arch" type="xml">
+        <!-- <field name="domain">[('bed_type','!=','reserved')]</field> -->
+            <tree string="Bed Manage" editable="top" 
+            decoration-danger="bed_status in ('reserved', 'occuiped', 'notavailable')"
+            decoration-success="bed_status=='available'"
+            >
+                <field name="name" string="Bed Name"></field>
+                <field name="bed_type" string="Bed Type"></field>
+                <field name="bed_status" string="Bed Staus"></field>
+                <field name="reservation_charge" string=" Reservation Charges"></field>
+            </tree>
         </field>
     </record>
 </odoo>

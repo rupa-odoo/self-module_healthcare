@@ -5,4 +5,6 @@ class Healthcare_medicine(models.Model):
 
     name=fields.Char("name",required=True)
     price=fields.Float(string="Price")
+
+    _sql_constraints=[('check_medicine_price','CHECK(price>0)','Medicine Charge must be positive')]
     
