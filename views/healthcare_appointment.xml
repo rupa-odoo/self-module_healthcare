@@ -22,7 +22,7 @@
                 <field name="gender" string="Gender"></field>
                 <field name="docter" string="Docter"></field>
                 <field name="healthcare_typeIds" string="Healthcare Type"></field>
-                <field name="healthcare_tagIds" widget="many2many_tags"></field>
+                <field name="healthcare_tagIds" widget="many2many_tags" options="{'color_field':'color'}"></field>
                 <field name="state" string="State"></field>
             </tree>
         </field>
@@ -52,7 +52,7 @@
                             <field name="state" string="State"></field>
                         </group>
                         <group>
-                            <field name="healthcare_typeIds" string="Healthcare Type"></field>
+                            <field name="healthcare_typeIds" string="Healthcare Type" ></field>
                             <field name="healthcare_tagIds" widget="many2many_tags" options="{'color_field': 'color'}"></field>
                             <field name="appointment_date" string="Appointment Date"></field>
                             <field name="docter" string="Docters"></field>
@@ -106,6 +106,7 @@
                 
                 <filter  name="state" string="Active" domain="[('state','=','active')]"></filter>
                 <filter  name="state" string="Cancel" domain="[('state','=','cancel')]"></filter>
+                
 
                 <filter string="Urgency Level" name="healthcare_tagIds"
                     domain="[('healthcare_tagIds','=','Urgent')]"></filter>

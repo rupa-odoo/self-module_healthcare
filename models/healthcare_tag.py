@@ -4,4 +4,4 @@ class HealthcareTag(models.Model):
     _description="Healthcare Tags"
 
     name=fields.Char("Name",required=True)
-    color=fields.Integer(string="Color")
+    color=fields.Integer()

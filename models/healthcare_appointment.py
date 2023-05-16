@@ -49,6 +49,10 @@ class HealthcareAppointment(models.Model):
         else:
             self.age=0
 
+    # @api.depends("date_of_birth")
+    # def _patient_age(self):
+    #         today=date
+
 
     
 
