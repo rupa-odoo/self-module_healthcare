@@ -27,17 +27,23 @@ class HealthcareAppointment(models.Model):
     price=fields.Float(string="Price", compute="_patient_price")
     prescription=fields.Text(string="Prescription")
     prescription_ids=fields.Many2many("healthcare.medicine",string="Prescription")
-    bed_manage_ids=fields.Many2many("healthcare.bedmanage" ,string="Bed Manage",domain="[('bed_status','not in',['reserved','occuiped'])]")
+    bed_manage_ids=fields.Many2one("healthcare.bedmanage",string="Bed Manage",domain="[('bed_status','not in',['reserved','occuiped'])]")
+    # bed_ids=fields.Many2one("healthcare.bedmanage",string="Bed Manage")
     state=fields.Selection(
         string='state',
         selection=[('draft','Draft'),('active','Active'),('cancel','Cancel'),('invoice','Invoice')],copy=True,default='draft')
 
+    _sql_constraints=[('check_age','CHECK(date_of_birth<current_date)','Age must be postive')]
+    _sql_constraints=[('check_appointment_date','CHECK(appointment_date>=current_date)','Date of Appoinment must be today of other day')]
+
+
+
+
+
     @api.depends("prescription_ids.price")
     def _patient_price(self):
         if self and (self.mapped("prescription_ids.price"),self.mapped("bed_manage_ids.reservation_charge")):
-            self.price=sum(self.mapped("prescription_ids.price")+self.mapped("bed_manage_ids.reservation_charge"))
-             
-            
+            self.price=sum(self.mapped("prescription_ids.price")+self.mapped("bed_manage_ids.reservation_charge")) 
         else:
             self.price=0
 
@@ -48,13 +54,6 @@ class HealthcareAppointment(models.Model):
             self.age=((date.today()-self.date_of_birth).days)//365
         else:
             self.age=0
-
-    # @api.depends("date_of_birth")
-    # def _patient_age(self):
-    #         today=date
-
-
-    
 
     def action_active(self):
         if self.state=="cancle":

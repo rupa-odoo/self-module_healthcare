@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="healthcare_appointment_demo" model="healthcare.appointment">
+        <field name="name">Tom</field>
+        <field name="age">19</field>
+        <field name="gender">male</field>
+        <field name="date_of_birth">2004-02-02</field>
+        <field name="mobile">1234567890</field>
+        <field name="appointment_date">2023-05-17</field>
+        <field name="address">London</field>
+        <field name="email">tom@gmail.com</field> 
+        <field name="bloodgroup">ABpositive</field>
+        <!-- <field name="urgency_level"></field> -->
+    </record>
+    <record id="healthcare_bedmanage_demo" model="healthcare.bedmanage">
+        <field name="name">ICU</field>
+        <field name="reservation_charge">1000</field>
+        <field name="bed_type">private</field>
+        <field name="bed_status">available</field>
+    </record>
+    <record id="healthcare_bedmanage1_demo" model="healthcare.bedmanage">
+        <field name="name">Ward</field>
+        <field name="reservation_charge">500</field>
+        <field name="bed_type">common</field>
+        <field name="bed_status">available</field>
+    </record>
+
+    <record id="healthcare_prescription_demo" model="healtcare.prescription">
+        <field name="medicine">Dolo</field>
+        <field name="dose">3</field>
+        <field name="duration">2023-05-30</field>
+        <field name="status">accepted</field>
+    </record>
+</odoo>

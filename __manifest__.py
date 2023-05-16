@@ -17,7 +17,7 @@
 
     ],
     'demo':[
-
+        'demo/healthcare_demo.xml',
     ],
     'application':True,
 }

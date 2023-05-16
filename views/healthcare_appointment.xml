@@ -24,6 +24,7 @@
                 <field name="healthcare_typeIds" string="Healthcare Type"></field>
                 <field name="healthcare_tagIds" widget="many2many_tags" options="{'color_field':'color'}"></field>
                 <field name="state" string="State"></field>
+                <field name="appointment_date" string="Appointment Date" optional='hidden'></field>
             </tree>
         </field>
     </record>
@@ -52,13 +53,11 @@
                             <field name="state" string="State"></field>
                         </group>
                         <group>
-                            <field name="healthcare_typeIds" string="Healthcare Type" ></field>
-                            <field name="healthcare_tagIds" widget="many2many_tags" options="{'color_field': 'color'}"></field>
+                            <field name="healthcare_typeIds" string="Healthcare Type" widget="many2one" options="{'color_field': 'color'}"></field>
+                            <field name="healthcare_tagIds" string="Healthcare Tags" widget="many2many_tags" options="{'color_field': 'color'}"></field>
                             <field name="appointment_date" string="Appointment Date"></field>
                             <field name="docter" string="Docters"></field>
                             <field name="price" string="Price"></field>
-                            
-
                         </group>
                         <notebook>
                             <page string="General">
