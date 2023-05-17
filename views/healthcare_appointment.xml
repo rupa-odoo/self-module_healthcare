@@ -29,6 +29,18 @@
         </field>
     </record>
 
+    <!-- <record id="appointment_calender" model="ir.ui.view">
+        <field name="name">healthcare.appointment.calender</field>
+        <field name="model">healthcare.appointment</field>
+        <field name="arch" type="xml">
+            <calender string="Appointment calender" date_start="appointment_date">
+            <field name="name"></field>
+            </calender>
+        
+        </field>
+    
+    </record> -->
+
     <record id="healthcare_view_form" model="ir.ui.view">
         <field name="name">healthcare.appointment.form</field>
         <field name="model">healthcare.appointment</field>
@@ -80,6 +92,11 @@
             </form>
         </field>
     </record>
+    <!-- Action of the appointment menu -->
+     <!-- <record name="action_appointment" model="ir.actions.act_window"></record>
+    <menuitem id="healthcare_appointment" name="Appointments" parent="healthcare_appointment" action="action_appointment" sequence="30"></menuitem> -->
+
+
 
     <!-- prescription record-->
     

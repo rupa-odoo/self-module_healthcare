@@ -37,7 +37,7 @@ class HealthcareAppointment(models.Model):
     _sql_constraints=[('check_appointment_date','CHECK(appointment_date>=current_date)','Date of Appoinment must be today of other day')]
 
 
-
+    
 
 
     @api.depends("prescription_ids.price")
@@ -68,5 +68,6 @@ class HealthcareAppointment(models.Model):
         else:
             self.state="cancle"
         return True
-        
+    
+    
         

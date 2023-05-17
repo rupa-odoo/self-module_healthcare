@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <menuitem id="healthcare_menu_root" name="Heathcare">
-        <menuitem id="healthcare_appointment_menu" name="Appointments">
+        <menuitem id="healthcare_appointment_menu" name="Patients">
             <menuitem id="healtcare_appointment_menu_action" action="healthcare_appointment_action" name="Appointment"/>
             <menuitem id="healthcare_bedmanage_menu_action" action="healthcare_bedmanage_action" name="Bed Manage"/>
         </menuitem>

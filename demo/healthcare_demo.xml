@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+
+    <record id="healthcare_type_demo" model="healthcare.type">
+        <field name="name">Disease</field>
+    </record>
+    <record id="healthcare_tag1_demo" model="healthcare.tag">
+        <field name="name">cozy</field>
+        <field name="color">1</field>
+    </record>
+    <record id="healthcare_tag2_demo" model="healthcare.tag">
+        <field name="name">Renovated</field>
+        <field name="color">2</field>
+    </record>
+    <record id="healthcare_medicine1_demo" model="healthcare.medicine">
+        <field name="name">Dolo</field>
+        <field name="price">100</field>
+    </record>
+    
+
     <record id="healthcare_appointment_demo" model="healthcare.appointment">
         <field name="name">Tom</field>
         <field name="age">19</field>
@@ -10,14 +28,21 @@
         <field name="address">London</field>
         <field name="email">tom@gmail.com</field> 
         <field name="bloodgroup">ABpositive</field>
+        <field name="healthcare_typeIds" ref="healthcare_type_demo"/>
+        <field name="docter" ref="base.user_demo"/>
+        <field name="healthcare_tagIds" eval="[(6, 0, [ ref('healthcare_tag1_demo'), ref('healthcare_tag2_demo')])]"/>
+        <field name="prescription_ids" eval="[(6,0,[ref('healthcare_medicine1_demo')])]"></field>
         <!-- <field name="urgency_level"></field> -->
     </record>
+
+
     <record id="healthcare_bedmanage_demo" model="healthcare.bedmanage">
         <field name="name">ICU</field>
         <field name="reservation_charge">1000</field>
         <field name="bed_type">private</field>
         <field name="bed_status">available</field>
     </record>
+
     <record id="healthcare_bedmanage1_demo" model="healthcare.bedmanage">
         <field name="name">Ward</field>
         <field name="reservation_charge">500</field>

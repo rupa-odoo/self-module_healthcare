@@ -23,3 +23,14 @@ class Healthcare_bedmanage(models.Model):
     def _bed_count(self):
         for record in self:
             record.bed_count=len(record.bed_manage_ids)
+
+    def action_bedmanage(self):
+        return{
+            'type': 'ir.actions.act_window',
+            'name': ('appointment'),
+            'res_model': 'healthcare.appointment',
+            'view_type': 'list',
+            'view_mode': 'list',
+            'domain': [('id', 'in', self.bed_manage_ids.ids)],
+
+        }
