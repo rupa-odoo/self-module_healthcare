@@ -9,6 +9,7 @@
             <menuitem id="healthcare_menu_type_action" action="healthcare_type_action" name="Healthcare Types"/>
             <menuitem id="healthcare_menu_tag_action" action="healthcare_tag_action" name="Healthcare Tags"/>
             <menuitem id="healthcare_menu_prescription_action" action="healthcare_medicine_action" name="Medicine"/>
-    </menuitem>
+        </menuitem>
+    
     </menuitem>
 </odoo>

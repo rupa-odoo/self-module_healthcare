@@ -29,6 +29,13 @@ class HealthcareAppointment(models.Model):
     prescription_ids=fields.Many2many("healthcare.medicine",string="Prescription")
     bed_manage_ids=fields.Many2one("healthcare.bedmanage",string="Bed Manage",domain="[('bed_status','not in',['reserved','occuiped'])]")
     # bed_ids=fields.Many2one("healthcare.bedmanage",string="Bed Manage")
+    
+    # related feilds 
+    bed_name=fields.Char(related="bed_manage_ids.name",string="Name")
+    bed_charge=fields.Integer(related="bed_manage_ids.reservation_charge",string="Charge")
+    
+    
+    
     state=fields.Selection(
         string='state',
         selection=[('draft','Draft'),('active','Active'),('cancel','Cancel'),('invoice','Invoice')],copy=True,default='draft')

@@ -13,6 +13,7 @@
         'views/healthcare_prescription.xml',
         'views/healthcare_medicine.xml',
         'views/healthcare_bedmanage.xml',
+        'views/healthcare_docter.xml',
         'views/healthcare_menus.xml',
 
     ],

@@ -83,11 +83,15 @@
                              <field name="prescription_ids"></field>
                             </page>
                             <page string="Bed Manage">
-                             <field name="bed_manage_ids" attrs="{'readonly':[('state','in',['reserved','occuiped','notavailable'])]}"></field>
+                             <!-- <field name="bed_manage_ids" attrs="{'readonly':[('state','in',['reserved','occuiped','notavailable'])]}"> -->
+                             <!-- </field> -->
+                             <group>
+                                <field name="bed_manage_ids" string="Bed Name"></field>
+                                <field name="bed_charge" string="Charge"></field>
+                             </group>
                             </page>
                         </notebook>
                     </group>
-
                 </sheet>
             </form>
         </field>

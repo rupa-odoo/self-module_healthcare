@@ -43,8 +43,7 @@
         <!-- <field name="domain">[('bed_type','!=','reserved')]</field> -->
             <tree string="Bed Manage" 
             decoration-danger="bed_status in ('reserved', 'occuiped', 'notavailable')"
-            decoration-success="bed_status=='available'"
-            >
+            decoration-success="bed_status=='available'">
                 <field name="name" string="Bed Name"></field>
                 <field name="bed_type" string="Bed Type"></field>
                 <field name="bed_status" string="Bed Staus"></field>
