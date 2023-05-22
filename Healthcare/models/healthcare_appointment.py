@@ -6,8 +6,12 @@ from odoo.exceptions import UserError,ValidationError
 class HealthcareAppointment(models.Model):
     _name="healthcare.appointment"
     _description="Healtcare Appointment"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+
 # Patient Fields
     name=fields.Char(string="Name",required=True)
+    image=fields.Image(string = "Image")
+    # sequence = fields.Integer(string = "Sequence")
     age=fields.Integer(string="Age" ,compute="_patient_age")
     gender=fields.Selection(
         string='Gender',
@@ -31,14 +35,14 @@ class HealthcareAppointment(models.Model):
     # bed_ids=fields.Many2one("healthcare.bedmanage",string="Bed Manage")
     
     # related feilds 
-    bed_name=fields.Char(related="bed_manage_ids.name",string="Name")
+    bed_name=fields.Char(related="bed_manage_ids.name",string="Name",tracking=True)
     bed_charge=fields.Integer(related="bed_manage_ids.reservation_charge",string="Charge")
     
     
     
     state=fields.Selection(
         string='state',
-        selection=[('draft','Draft'),('active','Active'),('cancel','Cancel'),('invoice','Invoice')],copy=True,default='draft')
+        selection=[('draft','Draft'),('active','Active'),('cancle','Cancle'),('invoice','Invoice')],copy=True,default='draft',tracking=True)
 
     _sql_constraints=[('check_age','CHECK(date_of_birth<current_date)','Age must be postive')]
     _sql_constraints=[('check_appointment_date','CHECK(appointment_date>=current_date)','Date of Appoinment must be today of other day')]
@@ -76,5 +80,7 @@ class HealthcareAppointment(models.Model):
             self.state="cancle"
         return True
     
+    def action_invoice(self):
+        self.state="invoice"
     
         

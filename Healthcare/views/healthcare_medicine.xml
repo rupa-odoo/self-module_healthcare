@@ -34,4 +34,25 @@
             </tree>
         </field>
     </record>
+
+
+    <!-- <record id="medicine_vie" model="ir.ui.view">
+        <field name="name">medicine</field>
+        <field name="model">healthcare.medicine</field>
+        <field name="inherit_id" ref="account.view_move_form"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='preferences']" position="after">
+                <page string="Products">
+                    <field name="doctor_appointment">
+                        <tree>
+                            <field name="name"/>
+                            <field name="appointment_date"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field> 
+    </record> -->
+
+
 </odoo>

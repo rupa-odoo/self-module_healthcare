@@ -1,7 +1,7 @@
 {
     'name':"Healthcare",
     'version':'1.0',
-    'dependds':['base'],
+    'depends':['base','mail'],
     'author':"Author Name",
     'category':'Category',
     'description':"",

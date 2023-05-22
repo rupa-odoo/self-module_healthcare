@@ -3,7 +3,7 @@
     <record id="healthcare_appointment_action" model="ir.actions.act_window">
         <field name="name">Appointment</field>
         <field name="res_model">healthcare.appointment</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
         <field name="context">{'search_default_state':True}</field>
     </record>
 
@@ -13,6 +13,55 @@
         <field name="view_mode">tree,form</field>
     </record> -->
 
+    <!-- kanban View  -->
+    <record id="kanban_view_healthcare" model="ir.ui.view">
+        <field name="name">Kanban View</field>
+        <field name="model">healthcare.appointment</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <field name="name"></field>
+                <field name="bed_manage_ids" />
+                <field name="gender"></field>
+                <templates>
+                    <t t-name="kanban-box">
+
+                        <div class="oe_kanban_global_click">
+                            <strong>
+                                <!-- <span t-esc="record.name.raw_value"></span> -->
+                                <field name="name"></field> 
+                            </strong>
+                            <div> Type : <field name="healthcare_typeIds"></field>
+                            </div>
+                            <div>
+                           Appointment Date : <field name="appointment_date"></field>
+                            </div>
+                            <!-- <div t-if="record.bed_manage_ids.raw_value=='reserved'"> Bed Name :<field
+                                    name="name"></field>
+                            </div> -->
+                           
+                            <div>
+                                <field name="healthcare_tagIds" widget="many2many_tags"
+                                    options="{'color_field':'color'}"></field>
+                            </div>
+                             <div class="o_favorite">
+                            <a href="#">
+                            <i class="fa fa-star" role="img" title="Remove from Favorites" aria-label="Remove from Favorites"></i>
+                            </a>
+                            </div>
+                            <div class="oe_kanban_bottom_right float-end">
+                                <field name="docter" widget="many2one_avatar_user"/>
+                            </div> 
+                            
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <!--List
+    View  -->
     <record id="Healthcare_view_tree" model="ir.ui.view">
         <field name="name">healthcare.appointment.tree</field>
         <field name="model">healthcare.appointment</field>
@@ -22,23 +71,24 @@
                 <field name="gender" string="Gender"></field>
                 <field name="docter" string="Docter"></field>
                 <field name="healthcare_typeIds" string="Healthcare Type"></field>
-                <field name="healthcare_tagIds" widget="many2many_tags" options="{'color_field':'color'}"></field>
+                <field name="healthcare_tagIds" widget="many2many_tags"
+                    options="{'color_field':'color'}"></field>
                 <field name="state" string="State"></field>
                 <field name="appointment_date" string="Appointment Date" optional='hidden'></field>
             </tree>
         </field>
     </record>
 
+
+    <!-- calender view -->
     <!-- <record id="appointment_calender" model="ir.ui.view">
         <field name="name">healthcare.appointment.calender</field>
         <field name="model">healthcare.appointment</field>
         <field name="arch" type="xml">
             <calender string="Appointment calender" date_start="appointment_date">
-            <field name="name"></field>
+                <field name="name"></field>
             </calender>
-        
         </field>
-    
     </record> -->
 
     <record id="healthcare_view_form" model="ir.ui.view">
@@ -49,6 +99,8 @@
                 <header>
                     <field name="state" widget="statusbar"
                         statusbar_visible="draft,active,cancle,invoice" />
+                    <button name="action_invoice" type="object" string="Invoice" state="invoice"
+                        class="oe_highlight"></button>
                     <button name="action_active" type="object" string="Active" class="oe_highlight"></button>
                     <button name="action_cancled" type="object" string="Cancle"></button>
                 </header>
@@ -58,6 +110,7 @@
                     </h1>
                     <group>
                         <group>
+                         <field name="image" class="oe_avatar" widget="image"></field>
                             <field name="date_of_birth" string="Date of Birth"></field>
                             <field name="age" string="Age"></field>
                             <field name="gender" string="Gender"></field>
@@ -65,8 +118,10 @@
                             <field name="state" string="State"></field>
                         </group>
                         <group>
-                            <field name="healthcare_typeIds" string="Healthcare Type" widget="many2one" options="{'color_field': 'color'}"></field>
-                            <field name="healthcare_tagIds" string="Healthcare Tags" widget="many2many_tags" options="{'color_field': 'color'}"></field>
+                            <field name="healthcare_typeIds" string="Healthcare Type"
+                                widget="many2one" options="{'color_field': 'color'}"></field>
+                            <field name="healthcare_tagIds" string="Healthcare Tags"
+                                widget="many2many_tags" options="{'color_field': 'color'}"></field>
                             <field name="appointment_date" string="Appointment Date"></field>
                             <field name="docter" string="Docters"></field>
                             <field name="price" string="Price"></field>
@@ -80,30 +135,48 @@
                                 </group>
                             </page>
                             <page string="Prescription">
-                             <field name="prescription_ids"></field>
+                                <field name="prescription_ids"></field>
                             </page>
                             <page string="Bed Manage">
-                             <!-- <field name="bed_manage_ids" attrs="{'readonly':[('state','in',['reserved','occuiped','notavailable'])]}"> -->
-                             <!-- </field> -->
-                             <group>
-                                <field name="bed_manage_ids" string="Bed Name"></field>
-                                <field name="bed_charge" string="Charge"></field>
-                             </group>
+                                <!-- <field name="bed_manage_ids"
+                                attrs="{'readonly':[('state','in',['reserved','occuiped','notavailable'])]}"> -->
+                                <!-- </field> -->
+                                <group>
+                                    <field name="bed_manage_ids" string="Bed Name"></field>
+                                    <field name="bed_charge" string="Charge"></field>
+                                </group>
                             </page>
                         </notebook>
                     </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <field name="message_ids" />
+                    <field name="activity_ids" />
+                </div>
             </form>
         </field>
     </record>
     <!-- Action of the appointment menu -->
-     <!-- <record name="action_appointment" model="ir.actions.act_window"></record>
-    <menuitem id="healthcare_appointment" name="Appointments" parent="healthcare_appointment" action="action_appointment" sequence="30"></menuitem> -->
+    <!-- <record name="action_appointment" model="ir.actions.act_window">
+        <field name="name">Appointment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">healthcare.appointment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">calender,tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p>
+                Create your appointment !
+            </p>
+        </field>
+    </record>
 
+    <menuitem id="healthcare_calender" name="Appointment" parent="healthcare_appointment"
+    action="action_appointment" sequence="30"></menuitem> -->
 
 
     <!-- prescription record-->
-    
 
 
     <record id="healthcare_appointment_search" model="ir.ui.view">
@@ -123,10 +196,10 @@
                     <filter string="Age below 18" name="date_of_birth"
                     domain="[('age','&lt;',18)]"></filter>
                 </separator> -->
-                
-                <filter  name="state" string="Active" domain="[('state','=','active')]"></filter>
-                <filter  name="state" string="Cancel" domain="[('state','=','cancel')]"></filter>
-                
+
+                <filter name="state" string="Active" domain="[('state','=','active')]"></filter>
+                <filter name="state" string="Cancle" domain="[('state','=','cancle')]"></filter>
+
 
                 <filter string="Urgency Level" name="healthcare_tagIds"
                     domain="[('healthcare_tagIds','=','Urgent')]"></filter>
