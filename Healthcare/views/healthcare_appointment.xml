@@ -22,35 +22,64 @@
                 <field name="name"></field>
                 <field name="bed_manage_ids" />
                 <field name="gender"></field>
+                <field name="id"></field>
+                <field name="image"></field>
+                <field name="color"></field>
+                
+
                 <templates>
                     <t t-name="kanban-box">
 
-                        <div class="oe_kanban_global_click">
-                            <strong>
-                                <!-- <span t-esc="record.name.raw_value"></span> -->
-                                <field name="name"></field> 
-                            </strong>
-                            <div> Type : <field name="healthcare_typeIds"></field>
+                        <div class="oe_kanban_global_click" t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''}">
+                            <div class="o_kanban_image" style="height:100px width:100px"> 
+                                <img
+                                    t-att-src="kanban_image('healthcare.appointment','image',record.id.raw_value)" />
                             </div>
+
                             <div>
-                           Appointment Date : <field name="appointment_date"></field>
+                                <ul style="list-style-type:none">
+                                    <li>
+                                        <strong>
+                                            <!-- <span t-esc="record.name.raw_value"></span> -->
+                                            <field name="name"></field>
+                                        </strong>
+                                    </li>
+                                    <li> Type : <field name="healthcare_typeIds"></field>
+                                    </li>
+                                    <li> Appointment Date : <field name="appointment_date"></field>
+                                    </li>
+                                    <li>
+                                        <field name="healthcare_tagIds" widget="many2many_tags"
+                                            options="{'color_field':'color'}"></field>
+                                    </li>
+                                </ul>
                             </div>
-                            <!-- <div t-if="record.bed_manage_ids.raw_value=='reserved'"> Bed Name :<field
-                                    name="name"></field>
-                            </div> -->
+                            <div class="o_favorite">
+                                <ul style="list-style-type:none">
+                                    <li class="oe_kanban_bottom_left float-start">
+                                        <a href="#">
+                                            <i class="fa fa-star" role="img"
+                                                title="Remove from Favorites"
+                                                aria-label="Remove from Favorites"></i>
+                                        </a>
+                                    </li>
+                                    <li class="oe_kanban_bottom_right float-end">
+                                        <field name="docter" widget="many2one_avatar_user" />
+                                    </li>
+                                </ul>
+                            </div>
                            
-                            <div>
-                                <field name="healthcare_tagIds" widget="many2many_tags"
-                                    options="{'color_field':'color'}"></field>
-                            </div>
-                             <div class="o_favorite">
-                            <a href="#">
-                            <i class="fa fa-star" role="img" title="Remove from Favorites" aria-label="Remove from Favorites"></i>
-                            </a>
-                            </div>
-                            <div class="oe_kanban_bottom_right float-end">
-                                <field name="docter" widget="many2one_avatar_user"/>
-                            </div> 
+                                <div class="o_dropdown_kanban dropdown">
+                                    <a class="dropdown-toggle o-no-caret btn" role="button" data-bs-toggle="dropdown" data-bs-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <t t-if="widget.editable"><a role="menuitem" type="edit" class="dropdown-item">Edit</a></t>
+                                        <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
+                                        <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                    </div>
+
+                                </div>
                             
                         </div>
                     </t>
@@ -60,8 +89,7 @@
     </record>
 
 
-    <!--List
-    View  -->
+    <!--List View  -->
     <record id="Healthcare_view_tree" model="ir.ui.view">
         <field name="name">healthcare.appointment.tree</field>
         <field name="model">healthcare.appointment</field>
@@ -110,7 +138,7 @@
                     </h1>
                     <group>
                         <group>
-                         <field name="image" class="oe_avatar" widget="image"></field>
+                            <field name="image" class="oe_avatar" widget="image"></field>
                             <field name="date_of_birth" string="Date of Birth"></field>
                             <field name="age" string="Age"></field>
                             <field name="gender" string="Gender"></field>
@@ -157,6 +185,7 @@
             </form>
         </field>
     </record>
+    
     <!-- Action of the appointment menu -->
     <!-- <record name="action_appointment" model="ir.actions.act_window">
         <field name="name">Appointment</field>

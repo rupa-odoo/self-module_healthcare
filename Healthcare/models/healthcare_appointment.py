@@ -10,7 +10,7 @@ class HealthcareAppointment(models.Model):
 
 # Patient Fields
     name=fields.Char(string="Name",required=True)
-    image=fields.Image(string = "Image")
+    image=fields.Binary(string = "Image")
     # sequence = fields.Integer(string = "Sequence")
     age=fields.Integer(string="Age" ,compute="_patient_age")
     gender=fields.Selection(
@@ -22,6 +22,7 @@ class HealthcareAppointment(models.Model):
     address=fields.Text(string="Address")
     email=fields.Char(string="Email")
     bloodgroup=fields.Char(string="Blood Group")
+    color=fields.Integer(string="color")
 
 # Appointment fields
     urgency_level=fields.Char(string="Urgency Level")
