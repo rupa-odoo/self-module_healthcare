@@ -58,7 +58,7 @@
                                 <ul style="list-style-type:none">
                                     <li class="oe_kanban_bottom_left float-start">
                                         <a href="#">
-                                            <i class="fa fa-star" role="img"
+                                            <i class="fa fa-star" role="img" 
                                                 title="Remove from Favorites"
                                                 aria-label="Remove from Favorites"></i>
                                         </a>

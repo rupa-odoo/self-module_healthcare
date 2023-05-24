@@ -35,7 +35,6 @@
         </field>
     </record>
 
-
     <!-- <record id="medicine_vie" model="ir.ui.view">
         <field name="name">medicine</field>
         <field name="model">healthcare.medicine</field>
