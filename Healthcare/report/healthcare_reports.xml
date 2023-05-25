@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="report_healthcare_appointment" model="ir.actions.report">
+        <field name="name">Healthcare Invoice</field>
+        <field name="model">healthcare.appointment</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">Healthcare.healtcare_report_appointment</field>
+        <field name="report_file">Healthcare.healtcare_report_appointment</field>
+        <field name="binding_model_id" ref="model_healthcare_appointment"></field>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

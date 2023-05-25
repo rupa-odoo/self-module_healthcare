@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="healtcare_report_appointment">
+        <t t-foreach="docs" t-as="property">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                <div>
+                    <h1>
+                        <strong>Patient :</strong>
+                        <span t-field="property.name"></span>
+                    </h1>
+                    <div>
+                        <strong>Appointment Date :</strong>
+                        <span t-field="property.appointment_date" />
+                        <br></br>
+                        <strong>State : </strong>
+                        <span t-field="property.state" />
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Price</th>
+                               
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <t t-set="invoice" t-value="property.mapped('price')"/> -->
+                            <!-- <tr t-foreach="invoice" t-as="invoices"> -->
+                                <td>
+                                    <span t-field="property.price" />
+                                </td>
+                                
+                            <!-- </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+        </t>
+    </template>
+</odoo>

@@ -14,6 +14,8 @@
         'views/healthcare_medicine.xml',
         'views/healthcare_bedmanage.xml',
         'views/healthcare_docter.xml',
+        'report/healthcare_reports.xml',
+        'report/healthcare_templates.xml',
         'views/healthcare_menus.xml',
 
     ],
