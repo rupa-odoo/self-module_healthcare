@@ -19,20 +19,41 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Price</th>
-                               
-
-
+                                <th>Bed charge</th>
+                                <th>Prescription charge</th> 
+                                <th>Total charge</th>  
+                                <!-- <th>Bed charge</th>
+                                <th>Medicine Name</th>
+                                <th>Medicine charge</th>
+                                <th>Total Charge</th> -->                               
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <t t-set="invoice" t-value="property.mapped('price')"/> -->
-                            <!-- <tr t-foreach="invoice" t-as="invoices"> -->
+                            <!-- <t t-set="invoice" t-value="property.mapped('prescription_ids')"/>
+                            <tr t-foreach="invoice" t-as="invoices"> -->
+                                <td>
+                                    <span t-field="property.bed_charge"></span>
+                                </td>
+                                <td>
+                                    <span t-field="property.prescription_ids.price"></span>
+                                </td>
                                 <td>
                                     <span t-field="property.price" />
                                 </td>
-                                
-                            <!-- </tr> -->
+                                <!-- <td>
+                                    <span t-field="property.bed_charge"></span>
+                                </td>
+
+                                <td>
+                                    <span t-field="invoices.name"></span>
+                                </td>
+                                <td>
+                                    <span t-field="invoices.price"></span>
+                                </td>
+                                <td>
+                                    <span t-field="property.price"></span>
+                                </td>
+                             </tr> -->
                         </tbody>
                     </table>
                 </div>

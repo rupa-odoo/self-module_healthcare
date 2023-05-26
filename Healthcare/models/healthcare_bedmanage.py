@@ -4,7 +4,7 @@ class Healthcare_bedmanage(models.Model):
     _description="Healthcare bedmanage"
 
     name=fields.Char("name",required=True)
-    reservation_charge=fields.Integer(string="Reservation Charge")
+    reservation_charge=fields.Float(string="Reservation Charge")
     bed_manage_ids=fields.One2many('healthcare.appointment','bed_manage_ids')
     bed_count=fields.Integer(compute="_bed_count")
 

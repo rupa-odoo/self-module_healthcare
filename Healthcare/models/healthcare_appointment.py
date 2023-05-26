@@ -37,7 +37,7 @@ class HealthcareAppointment(models.Model):
     
     # related feilds 
     bed_name=fields.Char(related="bed_manage_ids.name",string="Name",tracking=True)
-    bed_charge=fields.Integer(related="bed_manage_ids.reservation_charge",string="Charge")
+    bed_charge=fields.Float(related="bed_manage_ids.reservation_charge",string="Charge")
     
     
     
